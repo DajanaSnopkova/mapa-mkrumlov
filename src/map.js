@@ -91,7 +91,7 @@ var parcelyDP = L.geoJSON(null, {
 });
 
 // Načtení geojson souboru s parcelami
-fetch('http://localhost/mapa-krumlov/data/parcely_Krumlov.geojson')
+fetch('https://github.com/DajanaSnopkova/mapa-mkrumlov/blob/main/data/parcely_Krumlov.geojson')
     .then(response => response.json())
     .then(data => {
         parcelyK.addData(data);
