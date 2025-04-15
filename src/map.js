@@ -114,12 +114,12 @@ function getColor(property) {
 
 function getColorNavrzenaOpatreni(property) {
     return property == 'BC' ? 'rgb(135,168,37)' :
-           property == 'BK' ? 'rgb(200,220,15)' :
+           property == 'BK' ? 'rgb(135,206,250)' :
            property == 'DR' ? 'rgb(201,126,173)' :
            property == 'PC' ? 'rgb(185,139,57)' :
            property == 'RL' ? 'rgb(217,18,55)' :
            property == 'SM' ? 'rgb(240,241,7)' :
-           property == 'VL' ? 'rgb(7,110,30' :
+           property == 'VL' ? 'rgb(7,110,30)' :
            property == 'NULL' ? 'rgb(180,180,200)':
                             'rgb(180,180,200)';
 };
