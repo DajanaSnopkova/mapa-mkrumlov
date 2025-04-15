@@ -1,5 +1,15 @@
 var map = L.map('map').setView([49.0448989, 16.3351411], 14); // M. Krumlov
 
+//Logo
+var logo = L.control({position: 'topleft'});
+logo.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'info');
+    div.innerHTML = '<img src="./src/NB_horizontalni_Black.svg" alt="Logo" size="50" style="width: 150px; height: auto; margin: 5px;"/>';	
+    return div;
+};
+logo.addTo(map);
+
+// Ovládací prvky mapy
 map.attributionControl._attributions = {};
 map.attributionControl.setPrefix();
 map.zoomControl.setPosition('topleft');
@@ -448,7 +458,6 @@ function toggleOwnerLegend() {
         map.removeControl(legendOwners);
     }
 };
-
 
 // Přidání legendy do mapy
 /*
