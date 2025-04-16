@@ -114,23 +114,23 @@ function getColor(property) {
 
 function getColorNavrzenaOpatreni(property) {
     return property == 'BC' ? 'rgb(135,168,37)' :
-           property == 'BK' ? 'rgb(135,206,250)' :
+           property == 'BK' ? 'rgb(240,241,7)':
            property == 'DR' ? 'rgb(201,126,173)' :
            property == 'PC' ? 'rgb(185,139,57)' :
            property == 'RL' ? 'rgb(217,18,55)' :
-           property == 'SM' ? 'rgb(240,241,7)' :
+           property == 'SM' ? 'rgb(135,206,250)' :
            property == 'VL' ? 'rgb(7,110,30)' :
            property == 'NULL' ? 'rgb(180,180,200)':
                             'rgb(180,180,200)';
 };
 
 function getColorErozniOpatreni(property) {
-    return property == 'H' ? 'rgb(255,186,225)' :
+    return property == 'H' ? 'rgb(230,145,56)' :
     property == 'P' ? 'rgb(35,120,178)' :
-    property == 'S' ? 'rgb(219,106,251)' :
+    property == 'S' ? 'rgb(140,69,207)' :
     property == 'T' ? 'rgb(32,200,230)' :
     property == 'V' ? 'rgb(7,110,30)' :
-    property == 'Z' ? 'rgb(255,238,126)' :
+    property == 'Z' ? 'rgb(135,168,37)' :
     property == 'NULL' ? 'rgb(180,180,200)':	
                      'rgb(180,180,200)';
 };
@@ -325,7 +325,7 @@ var groupedOverlays = {
         "Protierozní opatření": parcelyErozniOpatreni,
     },
     "Podkladové vrstvy": {
-        "Eroze - odtokové linie - nejdelší kritická délka OL": eagriOLNej,
+        "Eroze - odtokové linie - nejdelší krit. délka": eagriOLNej,
         "Eroze - odtokové linie": eagriOL,
         "DPB účinné": eagriDPBuc,
         "DPB uživatel": eagriDPBuziv,
@@ -378,8 +378,8 @@ legend.onAdd = function (map) {
 var legendNavrhOpatreni = L.control({position: 'bottomright'});
 legendNavrhOpatreni.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
-        druhyNO = ['BC', 'BK', 'DR', 'PC', 'RL', 'SM', 'VL', 'NULL'];
-        druhyNOlabels = ['biocentrum', 'biokoridor', 'ponechat', 'polní cesta', 'rozvojová plocha', 'směna pozemků', 'větrolam', 'neposuzovaná plocha'];
+        druhyNO = ['PC', 'VL', 'BK', 'BC', 'RL', 'DR', 'NULL', 'SM'];
+        druhyNOlabels = ['polní cesta', 'větrolam', 'biokoridor', 'biocentrum', 'rozvojová plocha', 'územní rezerva',  'neposuzovaná plocha', 'směna ZPF (návrh)'];
     div.innerHTML += '<h4>Navržená opatření</h4>';
     for (var i = 0; i < druhyNO.length; i++) {
         div.innerHTML +=
@@ -395,8 +395,8 @@ legendNavrhOpatreni.addTo(map);
 var legendErozniOpatreni = L.control({position: 'bottomright'});
 legendErozniOpatreni.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
-        druhyEO = ['H', 'P', 'S', 'T', 'V', 'Z', 'NULL'];
-        druhyEOlabels = ['úprava terénu (příkopy, terasy)', 'úprava vodoteče (přehrážky, stabilizace)', 'svejl (zasakovací prohlubně s výsadbou)', 'tůň, mokřad', 'výsadby dřevin, solitérů, stromořadí', 'zachování stavu, zatravnění', 'neposuzovaná plocha'];
+        druhyEO = ['P', 'T', 'H', 'S', 'V', 'Z', 'NULL'];
+        druhyEOlabels = ['přehrážky, stabilizace toku', 'tůň, mokřad', 'teréní úpravy (příkopy, terasy)', 'zasakovací příkop s výsadbou (svejl)', 'výsadba dřevin, solitérů, stromořadí', 'zachování stavu, zatravnění', 'neposuzovaná plocha'];
     div.innerHTML += '<h4>Protierozní opatření</h4>';
     for (var i = 0; i < druhyEO.length; i++) {
         div.innerHTML +=
@@ -474,4 +474,4 @@ priorityOp.on('add', function () { toggleLegend(priorityOp, legendPriorityOp); }
 priorityOp.on('remove', function () { toggleLegend(priorityOp, legendPriorityOp); });
 
 //L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
-L.control.groupedLayers(baseMaps, groupedOverlays, { collapsed: false }).addTo(map);
+L.control.groupedLayers(baseMaps, groupedOverlays, { collapsed: false, collapsible: true }).addTo(map);
