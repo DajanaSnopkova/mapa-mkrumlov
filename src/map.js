@@ -1,10 +1,10 @@
 var map = L.map('map').setView([49.0448989, 16.3351411], 14); // M. Krumlov
 
 //Logo
-var logo = L.control({position: 'topleft'});
+var logo = L.control({ position: 'topleft' });
 logo.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info');
-    div.innerHTML = '<img src="./src/NB_horizontalni_Black.svg" alt="Logo" size="50" style="width: 150px; height: auto; margin: 5px;"/>';	
+    div.innerHTML = '<img src="./src/NB_horizontalni_Black.svg" alt="Logo" size="50" style="width: 150px; height: auto; margin: 5px;"/>';
     return div;
 };
 logo.addTo(map);
@@ -31,7 +31,7 @@ var kmGridLayer = L.tileLayer('https://services.cuzk.cz/wmts/local-km-wmts-googl
 });
 
 var eagriOLNej = L.tileLayer.wms("https://mze.gov.cz/public/app/wms/plpis.fcgi", {
-    layers: 'ODTOKLINIE_NEJ_V8', 
+    layers: 'ODTOKLINIE_NEJ_V8',
     format: 'image/png',
     transparent: true,
     attribution: '&copy; <a href="http://eagri.cz">eAGRI</a>',
@@ -41,7 +41,7 @@ var eagriOLNej = L.tileLayer.wms("https://mze.gov.cz/public/app/wms/plpis.fcgi",
 });
 
 var eagriOL = L.tileLayer.wms("https://mze.gov.cz/public/app/wms/plpis.fcgi", {
-    layers: 'ODTOKLINIE_V2', 
+    layers: 'ODTOKLINIE_V2',
     format: 'image/png',
     transparent: true,
     attribution: '&copy; <a href="http://eagri.cz">eAGRI</a>',
@@ -51,7 +51,7 @@ var eagriOL = L.tileLayer.wms("https://mze.gov.cz/public/app/wms/plpis.fcgi", {
 });
 
 var eagriDPBuc = L.tileLayer.wms("https://mze.gov.cz/public/app/wms/public_DPB_PB_OPV.fcgi", {
-    layers: 'DPB_UCINNE', 
+    layers: 'DPB_UCINNE',
     format: 'image/png',
     transparent: true,
     attribution: '&copy; <a href="http://eagri.cz">eAGRI</a>',
@@ -61,7 +61,7 @@ var eagriDPBuc = L.tileLayer.wms("https://mze.gov.cz/public/app/wms/public_DPB_P
 });
 
 var eagriDPBuziv = L.tileLayer.wms("https://mze.gov.cz/public/app/wms/public_DPB_PB_OPV.fcgi", {
-    layers: 'DPB_UZIV', 
+    layers: 'DPB_UZIV',
     format: 'image/png',
     transparent: true,
     attribution: '&copy; <a href="http://eagri.cz">eAGRI</a>',
@@ -71,7 +71,7 @@ var eagriDPBuziv = L.tileLayer.wms("https://mze.gov.cz/public/app/wms/public_DPB
 });
 
 var eagriLPISVym = L.tileLayer.wms("https://mze.gov.cz/public/app/wms/plpis.fcgi", {
-    layers: 'LPIS_FB_VYMERA_TISK', 
+    layers: 'LPIS_FB_VYMERA_TISK',
     format: 'image/png',
     transparent: true,
     attribution: '&copy; <a href="http://eagri.cz">eAGRI</a>',
@@ -81,7 +81,7 @@ var eagriLPISVym = L.tileLayer.wms("https://mze.gov.cz/public/app/wms/plpis.fcgi
 });
 
 var zabagedSraz = L.tileLayer.wms("https://ags.cuzk.gov.cz/arcgis/services/ZABAGED_POLOHOPIS/MapServer/WmsServer", {
-    layers: '47', 
+    layers: '47',
     format: 'image/png',
     transparent: true,
     version: '1.3.0',
@@ -101,40 +101,41 @@ function loadGeoJSON(url, layer) {
 // funkce pro načtení barvy parcely podle atributu
 function getColor(property) {
     return property == 2 ? '#cc7d0f' :
-           property == 4 ? '#c3e332' :
-           property == 5 ? '#9fe8ba' :
-           property == 6 ? '#89eae8' :
-           property == 7 ? '#90ce45' :
-           property == 10 ? '#068246' :
-           property == 11 ? '#66a3c9' :
-           property == 13 ? '#a5aaa8' :
-           property == 14 ? '#d0b7c7' :
-                              '#ffffff';
+        property == 4 ? '#c3e332' :
+            property == 5 ? '#9fe8ba' :
+                property == 6 ? '#89eae8' :
+                    property == 7 ? '#90ce45' :
+                        property == 10 ? '#068246' :
+                            property == 11 ? '#66a3c9' :
+                                property == 13 ? '#a5aaa8' :
+                                    property == 14 ? '#d0b7c7' :
+                                        '#ffffff';
 };
 
 function getColorNavrzenaOpatreni(property) {
     return property == 'BC' ? 'rgb(135,168,37)' :
-           property == 'BK' ? 'rgb(240,241,7)':
-           property == 'DR' ? 'rgb(201,126,173)' :
-           property == 'PC' ? 'rgb(185,139,57)' :
-           property == 'RL' ? 'rgb(217,18,55)' :
-           property == 'SM' ? 'rgb(135,206,250)' :
-           property == 'VL' ? 'rgb(7,110,30)' :
-           property == 'NULL' ? 'rgb(180,180,200)':
-                            'rgb(180,180,200)';
+        property == 'BK' ? 'rgb(240,241,7)' :
+            property == 'DR' ? 'rgb(201,126,173)' :
+                property == 'PC' ? 'rgb(185,139,57)' :
+                    property == 'RL' ? 'rgb(217,18,55)' :
+                        property == 'SM' ? 'rgb(135,206,250)' :
+                            property == 'VL' ? 'rgb(7,110,30)' :
+                                property == 'NULL' ? 'rgb(180,180,200)' :
+                                    'rgb(180,180,200)';
 };
 
 function getColorErozniOpatreni(property) {
     return property == 'H' ? 'rgb(230,145,56)' :
-    property == 'P' ? 'rgb(35,120,178)' :
-    property == 'S' ? 'rgb(140,69,207)' :
-    property == 'T' ? 'rgb(32,200,230)' :
-    property == 'V' ? 'rgb(7,110,30)' :
-    property == 'Z' ? 'rgb(135,168,37)' :
-    property == 'NULL' ? 'rgb(180,180,200)':	
-                     'rgb(180,180,200)';
+        property == 'P' ? 'rgb(35,120,178)' :
+            property == 'S' ? 'rgb(140,69,207)' :
+                property == 'T' ? 'rgb(32,200,230)' :
+                    property == 'V' ? 'rgb(7,110,30)' :
+                        property == 'Z' ? 'rgb(135,168,37)' :
+                            property == 'NULL' ? 'rgb(180,180,200)' :
+                                'rgb(180,180,200)';
 };
 
+/*
 // Vytvoření vrstev parcel vlastnictví
 function createParcelLayer(fillColor, hoverColor = '#261a20') {
     const geoJsonLayer = L.geoJSON(null, {
@@ -164,6 +165,7 @@ function createParcelLayer(fillColor, hoverColor = '#261a20') {
 
     return geoJsonLayer;
 };
+*/
 
 
 // Vytvoření geoJSON vrstvy pro parcely podle druhu pozemku (bez dat)
@@ -221,9 +223,9 @@ var ku = L.geoJSON(null, {
 var priorityOp = L.geoJSON(null, {
     pointToLayer: function (feature, latlng) {
         let priority = feature.properties["Priorita opatření"];
-        let color = 'white'; 
+        let color = 'white';
         if (priority === '3') {
-            color = '#FF0000'; 
+            color = '#FF0000';
         } else if (priority === '2') {
             color = '#FFA500';
         }
@@ -336,6 +338,7 @@ var groupedOverlays = {
     "Parcely podle vlastnictví": {}
 };
 
+/*
 // Parcely podle vlastnictví zdroj a styl
 const vlastnictviLayers = [
     //{ name: "Parcely města M. Krumlov", file: "parcely_mesta.geojson", color: "#0AFFF5" },
@@ -356,6 +359,7 @@ vlastnictviLayers.forEach(item => {
     layer.on('add', toggleOwnerLegend);
     layer.on('remove', toggleOwnerLegend);
 });
+*/
 
 /*
 //Legenda druh pozemku
@@ -375,11 +379,11 @@ legend.onAdd = function (map) {
 */
 
 //Legenda navržená opatření
-var legendNavrhOpatreni = L.control({position: 'bottomright'});
+var legendNavrhOpatreni = L.control({ position: 'bottomright' });
 legendNavrhOpatreni.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
         druhyNO = ['PC', 'VL', 'BK', 'BC', 'RL', 'DR', 'NULL', 'SM'];
-        druhyNOlabels = ['polní cesta', 'větrolam', 'biokoridor', 'biocentrum', 'rozvojová plocha', 'územní rezerva',  'neposuzovaná plocha', 'směna ZPF (návrh)'];
+    druhyNOlabels = ['polní cesta', 'větrolam', 'biokoridor', 'biocentrum', 'rozvojová plocha', 'územní rezerva', 'neposuzovaná plocha', 'směna ZPF (návrh)'];
     div.innerHTML += '<h4>Navržená opatření</h4>';
     for (var i = 0; i < druhyNO.length; i++) {
         div.innerHTML +=
@@ -392,11 +396,11 @@ legendNavrhOpatreni.onAdd = function (map) {
 legendNavrhOpatreni.addTo(map);
 
 //Legenda protierozní opatření	
-var legendErozniOpatreni = L.control({position: 'bottomright'});
+var legendErozniOpatreni = L.control({ position: 'bottomright' });
 legendErozniOpatreni.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
         druhyEO = ['P', 'T', 'H', 'S', 'V', 'Z', 'NULL'];
-        druhyEOlabels = ['přehrážky, stabilizace toku', 'tůň, mokřad', 'teréní úpravy (příkopy, terasy)', 'zasakovací příkop s výsadbou (svejl)', 'výsadba dřevin, solitérů, stromořadí', 'zachování stavu, zatravnění', 'neposuzovaná plocha'];
+    druhyEOlabels = ['přehrážky, stabilizace toku', 'tůň, mokřad', 'teréní úpravy (příkopy, terasy)', 'zasakovací příkop s výsadbou (svejl)', 'výsadba dřevin, solitérů, stromořadí', 'zachování stavu, zatravnění', 'neposuzovaná plocha'];
     div.innerHTML += '<h4>Protierozní opatření</h4>';
     for (var i = 0; i < druhyEO.length; i++) {
         div.innerHTML +=
@@ -407,7 +411,7 @@ legendErozniOpatreni.onAdd = function (map) {
 };
 
 //Legenda priority opatření
-var legendPriorityOp = L.control({position: 'bottomright'});
+var legendPriorityOp = L.control({ position: 'bottomright' });
 legendPriorityOp.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
         colors = ['#FF0000', '#FFA500'],
@@ -421,12 +425,13 @@ legendPriorityOp.onAdd = function (map) {
     return div;
 };
 
+/*
 //Legenda vlastnictví
-var legendOwners = L.control({position: 'bottomright'});
+var legendOwners = L.control({ position: 'bottomright' });
 legendOwners.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
         colors = vlastnictviLayers.map(item => item.color);
-        labels = vlastnictviLayers.map(item => item.name);
+    labels = vlastnictviLayers.map(item => item.name);
     div.innerHTML += '<h4>Parcely podle vlastnictví</h4>';
     for (var i = 0; i < colors.length; i++) {
         div.innerHTML +=
@@ -435,6 +440,7 @@ legendOwners.onAdd = function (map) {
     }
     return div;
 };
+*/
 
 // Zobrazit legendu, pokud je aktivní vrstva
 function toggleLegend(layerName, legendName) {
@@ -445,6 +451,7 @@ function toggleLegend(layerName, legendName) {
     }
 };
 
+/*
 // Zobrazit legendu, pokud je aktivní vrstva podle vlastnictví
 function anyOwnerLayerVisible() {
     const layers = Object.values(groupedOverlays["Parcely podle vlastnictví"]);
@@ -458,6 +465,7 @@ function toggleOwnerLegend() {
         map.removeControl(legendOwners);
     }
 };
+*/
 
 // Přidání legendy do mapy
 /*
